@@ -1,0 +1,222 @@
+/* Селектор тега, що застосовує стилі до всіх елементів <p> 
+p {
+    font-style: italic;
+    color: blue;
+    font-size: 16px;
+}
+*/
+/* Застосування стилів до всіх <input>, які мають атрибут type зі значенням 'text' 
+[type="text"] {
+    border: 3px solid red;
+    padding: 5px;
+}
+*/
+/* Застосування стилів до елемента <p> з ідентифікатором 'uniqueParagraph' 
+#uniqueParagraph {
+    color: darkorchid;
+    font-size: 20px;
+}
+*/
+/* Застосування стилів до елементів з класом 'highlight' 
+.redbold {
+    color: red;
+    font-weight: bold;
+}
+
+.blackborder {
+    border: solid 5px;
+}
+
+.box {
+    width: 200px;
+    height: 200px;
+    background-color: rgb(185, 32, 178);
+}
+
+.child-box {
+    width: 30%;
+    height: 30%;
+    background-color: rgb(217, 255, 0);
+}
+
+.child-box2 {
+    width: 3em;
+    height: 3em;
+    background-color: rgb(112, 3, 255);
+}
+*/
+/*
+.child-box3 {
+    
+    width: 10vmax;
+    height: 5vmax;
+     background-color: rgb(90, 90, 90,0.3);
+    background-image: url('/images/logo_NP.png');
+    background-size: cover;
+}
+*/
+
+.mainconteiner {
+    margin: 20px;
+    padding: 20px;
+}
+
+
+iframe {
+    border: none;
+    margin: 0 auto; 
+}
+
+.menu-head {    
+    font-size: 20px;
+    width: 90vw;
+    height: 30px;  
+    font-style: italic;    
+}
+
+.picture-box{
+    width: fit-content;
+    height: fit-content;
+    border: 2px solid;
+    border-color: red;    
+    margin: 0 auto;
+    padding: 5px;   
+}
+.picture-string{
+    width: 90vw;
+    height: 380px;
+    display: flex;
+    margin: 0 auto;
+    padding: 5px;
+}
+.pic-name{
+    width: 100%;
+    height: 10%;
+    margin-bottom: 5px;
+    font-weight: bolder;
+    font-size: 20px;
+    text-align: center;
+    color: green;
+}
+
+form{
+    width: 550px;
+    margin: 0 auto;
+}
+
+.fildset-border{
+    width: 500px;
+    border: 5px brown solid;
+    margin: 20px;
+    padding: 10px;
+    background-color: aquamarine;
+}
+
+.form-element{
+    margin: 5px;
+    border: 2px salmon solid;
+    padding: 3px 5px 3px 5px;
+    align-items: center;
+}
+
+legend{
+    text-align: center;
+    font-style: normal;
+    font-weight: bold;
+    color: darkgreen;
+
+}
+
+fieldset{
+    border: none;
+    padding: 5px;
+}
+
+label{
+    text-align: center;
+    color: darkmagenta;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+}
+
+input, textarea {  
+    width: 100%;
+    font-size: 20px;    
+
+}
+
+[type="radio"], [type="checkbox"] {  
+    width: 10%;
+}
+
+[type="date"], [type="tel"]  {  
+    width: 14ch;
+}
+
+[type="number"]{
+    width: 5ch;
+}
+
+.button-class {
+    width: 33%;
+    margin: 0 auto;
+    padding: 0px;
+}
+
+button{
+    width: 90%;
+    height: 20px;
+    background-color: darkgreen;
+    color: beige;
+    text-shadow: 2px;
+}
+
+.button-group {
+    width: 90%;
+    margin: 0 auto;
+    padding: 3px;
+    display: flex;
+    align-content: space-between; 
+}
+
+h1 {
+   text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 40px;
+    color: goldenrod;
+}
+
+a[href*="#art"]{
+    color: chocolate;
+}
+
+h2{
+    width: 100%;
+    height: fit-content;
+    color: rgb(247, 4, 203);
+    margin: 10px 0px 10px 0px;
+}
+pre {
+    color: darkred;
+    font-size: 15px;
+    font-weight: bold;
+}
+strong{
+    font-size: x-large;
+    color: rgb(0, 2, 145);
+}
+.center-page {
+    margin: 0 auto;    
+    width: 100%;
+    height: fit-content;
+    text-align: center;
+}
+
+.custom-ul-list {
+    list-style: square inside;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
