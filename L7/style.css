@@ -21,6 +21,10 @@
     width: 100px;
     height: 50px;
 }
+.h100-w50{
+    width: 50px;
+    height: 100px;
+}
 .txt-color-red-bold a{
     color: chartreuse;
 }
@@ -46,10 +50,47 @@
     display: inline-block;
     margin: 10px 0px 10px;
 }
-
 .disp-flx{
     display: flex;
 }
 .bord-5{
     border: 2px solid purple;
+}
+.fl-l{
+    float: left;
+}
+.fl-r{
+    float: right;
+}
+.fl-n{
+    float: none;
+}
+.fl-ie{
+    float: inline-end;
+}
+.base-box.h-vh{
+    height: 100vh;
+}
+span,img{
+    padding: 5px;
+}
+.clr-both{
+    clear: both;
+}
+.ovf-auto{
+    overflow: auto;
+}
+.ovf-hdn{
+    overflow: hidden;
+}
+div.ovf-scrl{
+    overflow: scroll;
+}
+.ovf-clip{
+    overflow: clip;
+    overflow-clip-margin: 1em;
+}
+.m10-p10{
+    margin: 10px;
+    padding: 10px;
 }
