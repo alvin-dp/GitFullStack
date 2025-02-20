@@ -1,0 +1,111 @@
+
+.def-box{    
+  margin: 10px;
+  width: 100px;
+  height: 50px;
+}
+
+.b1{
+    background-color: red;
+}
+.b2{
+    background-color: green;     
+}
+.b3{
+    background-color: violet;
+}
+.def-box.bHx2{
+  height: calc(100% - 20px);
+}
+.def-box.mar-0-pad-5{
+  margin: 0px;
+  padding: 10px 0px 10px;
+}
+div {
+  border: 1px solid black;
+}
+.par{
+    width: 80%;
+    height: 80px;
+    border: 2px solid black;
+    margin-top: 15px;
+    overflow: hidden;
+}
+.Hx2{
+  height: 160px;
+}
+* {
+    box-sizing: border-box; 
+  }
+
+.double-box{
+  width: 130px;
+  height: calc(100% - 20px);
+  border: none;
+  margin: 10px;
+
+}  
+div .inner{
+  width: 100%;
+  height: 100%;
+}
+div .mar-bot5{
+  margin: 0px 0px 5px 0px; 
+}
+div .mar-top5{
+  margin: 5px 0px 0px 0px; 
+}
+.order1{
+  order: 1;
+}
+.fl-l{
+  float: left;
+}
+.fl-r{
+  float: right;
+}
+
+  .container {
+    width: 100vw;
+    height: 100vh;
+    margin: 15px; 
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .flex-col{
+    display: flex;
+    flex-direction: column;
+  }
+ .flex-row{
+  display: flex;
+  flex-direction: row-reverse; 
+ }
+
+  .block {
+    padding: 10px; /* Всі блоки матимуть внутрішній відступ 10px */
+    float: left; /* Всі блоки будуть плавати вліво */
+  }
+  
+  .left {
+    width: 200px; /* Лівий блок матиме фіксовану ширину 200px */
+    background-color: #ddd; /* Колір фону лівого блоку */
+    margin-left: calc(-100% + 250px + 20px); /* Відступ зліва для лівого блоку */
+  }
+  
+  .right {
+    width: 250px; /* Правий блок матиме фіксовану ширину 250px */
+    background-color: #bbb; /* Колір фону правого блоку */
+    float: right; /* Правий блок буде плавати вправо */
+  }
+  
+  .main {
+    width: calc(100% - 450px - 40px); /* Ширина основного блоку враховує ширину лівого і правого блоку, а також їхні відступи */
+    background-color: #f3f3f3; /* Колір фону основного блоку */
+    margin-left: 220px; /* Забезпечуємо місце для лівого блоку */
+  }
+  
+  .clearfix::after {
+    content: ""; /* Вміст псевдоелемента ::after */
+    display: table; /* Властивість display для псевдоелемента ::after */
+    clear: both; /* Властивість clear для псевдоелемента ::after */
+  }
