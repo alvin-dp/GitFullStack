@@ -14,10 +14,7 @@
 .def-box.bHx2{
   height: calc(100% - 20px);
 }
-.def-box.mar-0-pad-5{
-  margin: 0px;
-  padding: 10px 0px 10px;
-}
+
 div {
   border: 1px solid black;
 }
@@ -29,7 +26,7 @@ div {
     overflow: hidden;
 }
 .Hx2{
-  height: 200px;
+  height: 148px;
 }
 * {
     box-sizing: border-box; 
@@ -52,9 +49,7 @@ div .mar-bot5{
 div .mar-top5{
   margin: 5px 0px 0px 0px;  
 }
-.order1{
-  order: 1;
-}
+
 .fl-l{
   float: left;
 }
@@ -75,10 +70,4 @@ div .mid-mar-l{
     margin: 15px; 
     padding-left: 10px;
     padding-right: 10px;
-  }
-  
-  .main {
-    width: calc(100% - 450px - 40px); /* Ширина основного блоку враховує ширину лівого і правого блоку, а також їхні відступи */
-    background-color: #f3f3f3; /* Колір фону основного блоку */
-    margin-left: 220px; /* Забезпечуємо місце для лівого блоку */
   }
