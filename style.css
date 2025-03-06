@@ -31,10 +31,12 @@ p{
 /*****************/
 .first-screen{
     box-sizing: border-box;    
-    height: 68vh;
+    height: fit-content;
     background-color: var(--back-lgray);
     padding-top: 8vh;
     padding-left: 19vw;
+    padding-bottom: 7vh;
+
 }
 .navmenu{
     display: flex;
@@ -87,7 +89,7 @@ p{
     height: fit-content;
     margin-top: 16vh;
     font-weight: 500;
-    font-size: 48px;
+    font-size: 3rem;
     line-height: 78.75px;
     color: var(--font-b);   
 }
@@ -117,8 +119,9 @@ p{
 
 .fs_content{
     margin-top: 5vh;
-    width: 40%;
+    width: 45%;
     height: 6vh;
+    padding-bottom: 3vh;
     color: var(--font-g);
 }
 
@@ -126,8 +129,9 @@ p{
 
     .fs_content{
         margin-top: 3vh;
-        width: 70%;
-        overflow: auto;
+        width: 80%;
+        font-size: 1rem;              
+        /* overflow: auto; */
         height: 10vh;
         color: var(--font-g);
     }    
@@ -138,8 +142,8 @@ p{
         margin-top: 2vh;
         width: 80%;
         font-size: 0.8rem;        
-        height: 10vh;
-        overflow: auto;
+        height: 9vh;
+        /* overflow: auto; */
         color: var(--font-g);
     }    
 }
@@ -193,12 +197,13 @@ p{
 }
 @media (max-width: 375px) {
     .about_me{
-    margin-top: 4vh;        
+    margin-top: 7vh;        
     width: 80%;    
     height: 12vh;
     }    
 } 
 .about_header{
+    padding-top: 5vh;    
     font-weight: 500;
     font-size: 2rem;
     line-height: 37.5px;
@@ -225,6 +230,7 @@ p{
 @media (max-width: 1024px) {
     .about_content{
         font-size: 0.9rem;
+        line-height: 20.25px;        
     }   
 }
 @media (max-width: 375px) {
