@@ -187,7 +187,7 @@ p{
 }
 .num_image{
     @include mixins.w_h (50px,50px);  
-    background-image: url(/res/proj_icon.svg);
+    background-image: url(../res/proj_icon.svg);
 }
 .num_digits{
     @include mixins.font_w_s_lh (500,21px,24.61px);
@@ -264,7 +264,7 @@ p{
     display: flex;
     flex-direction: row;
     background-color: #000000A6;
-    background-image: url(/res/back_img_video.jpg);   
+    background-image: url(../res/back_img_video.jpg);   
     background-size: 100% 100%;
     justify-content: center;
     @include mixins.responsive(1024px) {        
@@ -277,7 +277,7 @@ p{
 
 .video_button{  
     @include mixins.w_h (7vw,7vw);
-    background-image: url(/res/play-button.svg);    
+    background-image: url(../res/play-button.svg);    
     background-size: 100% 100%;
     align-self: center;
 }
