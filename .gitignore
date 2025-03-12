@@ -7,3 +7,5 @@ node_modules/
 # Ігнорування тимчасових файлів
 *.tmp
 *.temp
+# ignore .map temporary files 
+*.map

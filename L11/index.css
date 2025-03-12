@@ -1,0 +1,15 @@
+.navigation {
+  background-color: #4caf50;
+}
+.navigation ul {
+  list-style-type: none;
+}
+.navigation ul li {
+  display: inline-block;
+}
+.navigation ul li a {
+  color: white;
+}
+.navigation ul li a:hover {
+  color: #333;
+}
