@@ -9,3 +9,5 @@ node_modules/
 *.temp
 # ignore .map temporary files 
 *.map
+# ignore .zip files 
+*.zip
