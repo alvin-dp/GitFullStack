@@ -1,9 +1,9 @@
-@mixin w_h ($wi,$hi) {
+@mixin width_height ($wi,$hi) {
     width: $wi;
     height: $hi;
 }
 
-@mixin font_w_s_lh ($fw,$fs,$lh) {
+@mixin font_weight_size_lineheight ($fw,$fs,$lh) {
  
     @if $fw != "0" {
         font-weight: $fw;

@@ -3,7 +3,7 @@ p, main, body {
   padding: 0px;
 }
 
-.footer, .video, .first-screen, main {
+.footer, .video, .numbers, .first-screen, main, body {
   box-sizing: border-box;
   height: -moz-fit-content;
   height: fit-content;
@@ -21,13 +21,16 @@ body {
 
 main {
   font-family: "Roboto";
-  width: 100vw;
+  width: 100%;
   background-color: #F9F9F9;
 }
 
 /* first section */
 /*****************/
 .first-screen {
+  width: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
   background-color: #EEEFF1;
   padding-top: 8vh;
   padding-left: 19vw;
@@ -76,7 +79,7 @@ main {
 }
 
 .fs_design {
-  width: 65vw;
+  width: 100%;
   height: -moz-fit-content;
   height: fit-content;
   margin-top: 16vh;
@@ -271,6 +274,7 @@ main {
 /* video section */
 /*****************/
 .video {
+  width: 100%;
   padding-top: 8vh;
   padding-bottom: 8vh;
   background-color: #EEEFF1;
@@ -378,6 +382,7 @@ main {
 /* footer me section */
 /*********************/
 .footer {
+  width: 100%;
   padding-left: 19vw;
   padding-top: 4vh;
   padding-bottom: 4vh;

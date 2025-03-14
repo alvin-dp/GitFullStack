@@ -20,6 +20,7 @@
 
 body{
     @extend %marg0-pad0;   
+    @extend %box-h-fit-content;    
     font-size: vars.$base-font-size;      
 }
 
@@ -27,7 +28,7 @@ main{
     @extend %marg0-pad0; 
     @extend %box-h-fit-content;
     font-family: 'Roboto';    
-    width: 100vw;
+    width: 100%;
     background-color: vars.$main-bg-color;
 }
 
@@ -38,6 +39,7 @@ p{
 /*****************/
 .first-screen{
     @extend %box-h-fit-content;
+    @include mixins.width_height (100%,fit-content); 
     background-color: vars.$back-lgray;
     padding-top: 8vh;
     padding-left: 19vw;
@@ -57,67 +59,67 @@ p{
       }
 }
 .navmenu_item{
-    color: vars.$font-b;
+    color: vars.$font-black;
     width: fit-content;
-    @include mixins.font_w_s_lh ("0",1rem,26.25px);
+    @include mixins.font_weight_size_lineheight ("0",1rem,26.25px);
     @include mixins.responsive(1024px) { 
-        @include mixins.font_w_s_lh ("0",0.8rem,"0");        
+        @include mixins.font_weight_size_lineheight ("0",0.8rem,"0");        
       }        
     @include mixins.responsive(375px) { 
-        @include mixins.font_w_s_lh ("0",0.5rem,"0"); 
+        @include mixins.font_weight_size_lineheight ("0",0.5rem,"0"); 
       }   
       
     &:hover{
         color: vars.$back-blue;
-        @include mixins.font_w_s_lh (500,"0","0"); 
+        @include mixins.font_weight_size_lineheight (500,"0","0"); 
     }      
 }
 
 .font_weight400{
-    @include mixins.font_w_s_lh (400,"0","0");     
+    @include mixins.font_weight_size_lineheight (400,"0","0");     
 }
 
 .fs_design{
-    @include mixins.w_h (65vw,fit-content);
+    @include mixins.width_height (100%,fit-content);
     margin-top: 16vh;
-    @include mixins.font_w_s_lh (500,3rem,78.75px);        
-    color: vars.$font-b; 
+    @include mixins.font_weight_size_lineheight (500,3rem,78.75px);        
+    color: vars.$font-black; 
     @include mixins.responsive(1024px) { 
         margin-top: 12vh;        
-        @include mixins.font_w_s_lh ("0",2rem,normal); 
+        @include mixins.font_weight_size_lineheight ("0",2rem,normal); 
       }   
     @include mixins.responsive(375px) { 
         margin-top: 3vh;        
-        @include mixins.font_w_s_lh ("0",1.5rem,"0"); 
+        @include mixins.font_weight_size_lineheight ("0",1.5rem,"0"); 
       }          
 }
 
 .fs_content{
-    @include mixins.w_h (45%,6vh);    
+    @include mixins.width_height (45%,6vh);    
     margin-top: 5vh;
     padding-bottom: 3vh;
-    color: vars.$font-g;
+    color: vars.$font-gray;
     @include mixins.responsive(1024px) { 
         margin-top: 3vh; 
-        @include mixins.w_h (80%,10vh);               
+        @include mixins.width_height (80%,10vh);               
       }     
       @include mixins.responsive(375px) { 
         margin-top: 2vh; 
-        @include mixins.w_h (80%,9vh);  
-        @include mixins.font_w_s_lh ("0",0.8rem,"0");                      
+        @include mixins.width_height (80%,9vh);  
+        @include mixins.font_weight_size_lineheight ("0",0.8rem,"0");                      
       }       
 }
 
 .fs_button{
-    @include mixins.w_h (225px,65px);
+    @include mixins.width_height (225px,65px);
     @extend %flex-center;
     margin-top: 4vh;
     text-align: center;
     background-color: vars.$back-blue;
-    color: vars.$font-w;
+    color: vars.$font-white;
     @include mixins.responsive(375px) {  
-        @include mixins.w_h (70%,6vh);  
-        @include mixins.font_w_s_lh ("0",0.9rem,"0");                        
+        @include mixins.width_height (70%,6vh);  
+        @include mixins.font_weight_size_lineheight ("0",0.9rem,"0");                        
       }     
 }
 /********************/
@@ -125,7 +127,7 @@ p{
 /********************/
 .about_me{
     box-sizing: border-box;    
-    @include mixins.w_h (540px,147px);  
+    @include mixins.width_height (540px,147px);  
     @extend %flex-center;
     flex-direction: column;    
     margin-top: 8vh;
@@ -133,34 +135,34 @@ p{
     gap: 5vh;
     @include mixins.responsive(1024px) { 
         margin-top: 7vh;        
-        @include mixins.w_h (55%,12vh);    
+        @include mixins.width_height (55%,12vh);    
     }
     @include mixins.responsive(375px) { 
         margin-top: 7vh;        
-        @include mixins.w_h (80%,12vh);    
+        @include mixins.width_height (80%,12vh);    
     } 
 }   
 .about_header{
     padding-top: 5vh;    
-    @include mixins.font_w_s_lh (500,2rem,37.5px);      
+    @include mixins.font_weight_size_lineheight (500,2rem,37.5px);      
     text-align: center;
-    color: vars.$font-b; 
+    color: vars.$font-black; 
     @include mixins.responsive(1024px) {        
-        @include mixins.font_w_s_lh ("0",1.75rem,"0");    
+        @include mixins.font_weight_size_lineheight ("0",1.75rem,"0");    
     }   
     @include mixins.responsive(375px) {        
-        @include mixins.font_w_s_lh ("0",1.5rem,"0");    
+        @include mixins.font_weight_size_lineheight ("0",1.5rem,"0");    
     }            
 }
 .about_content{
-    @include mixins.font_w_s_lh (400,1rem,26.25px);    
+    @include mixins.font_weight_size_lineheight (400,1rem,26.25px);    
     text-align: center;    
-    color: vars.$font-g;  
+    color: vars.$font-gray;  
     @include mixins.responsive(1024px) {        
-        @include mixins.font_w_s_lh ("0",0.9rem,20.25px);    
+        @include mixins.font_weight_size_lineheight ("0",0.9rem,20.25px);    
     }   
     @include mixins.responsive(375px) {        
-        @include mixins.font_w_s_lh ("0",0.8rem,normal);    
+        @include mixins.font_weight_size_lineheight ("0",0.8rem,normal);    
     }       
 }
 /*******************/
@@ -168,7 +170,8 @@ p{
 /*******************/
 .numbers{
     margin-top: 100px;
-    @include mixins.w_h (100%,250px);    
+    @extend %box-h-fit-content;    
+    @include mixins.width_height (100%,250px);    
     @extend %flex-center;     
     flex-wrap: wrap;    
     gap: 10px 45px;
@@ -181,29 +184,29 @@ p{
 }
 
 .num_item{
-    @include mixins.w_h (141px,50px);     
+    @include mixins.width_height (141px,50px);     
     display: flex;
     column-gap: 20px;
 }
 .num_image{
-    @include mixins.w_h (50px,50px);  
+    @include mixins.width_height (50px,50px);  
     background-image: url(../res/proj_icon.svg);
 }
 .num_digits{
-    @include mixins.font_w_s_lh (500,21px,24.61px);
+    @include mixins.font_weight_size_lineheight (500,21px,24.61px);
 
     @include mixins.responsive(375px) {        
-        @include mixins.font_w_s_lh ("0",1.2rem,normal);    
+        @include mixins.font_weight_size_lineheight ("0",1.2rem,normal);    
     }     
 }
 .num_content_group{
-    @include mixins.w_h (71px,44px);      
-    color: vars.$font-w; 
+    @include mixins.width_height (71px,44px);      
+    color: vars.$font-white; 
 }
 .num_text{
-    @include mixins.font_w_s_lh (400,1rem,26.25px);         
+    @include mixins.font_weight_size_lineheight (400,1rem,26.25px);         
     @include mixins.responsive(375px) {        
-        @include mixins.font_w_s_lh ("0",0.9rem,normal);    
+        @include mixins.font_weight_size_lineheight ("0",0.9rem,normal);    
     }      
 }
 /*****************/
@@ -211,6 +214,7 @@ p{
 /*****************/
 .video{
     @extend %box-h-fit-content;
+    width: 100%;
     padding-top: 8vh;
     padding-bottom: 8vh;
     background-color: vars.$back-lgray;
@@ -220,19 +224,19 @@ p{
     }      
 }
 .video_title{
-    @include mixins.w_h (540px,147px);     
+    @include mixins.width_height (540px,147px);     
     @include mixins.responsive(1024px) {        
-        @include mixins.w_h (75%,fit-content);    
+        @include mixins.width_height (75%,fit-content);    
     }  
     @include mixins.responsive(375px) {        
-        @include mixins.w_h (80%,fit-content);      
+        @include mixins.width_height (80%,fit-content);      
     }      
 }
 
 .video_head{
-    @include mixins.font_w_s_lh ("0",2rem,37.5px);
+    @include mixins.font_weight_size_lineheight ("0",2rem,37.5px);
     text-align: center;
-    color: vars.$font-b;
+    color: vars.$font-black;
     @include mixins.responsive(1024px) {        
         font-size: 1.7rem;
         margin-top: 0px; 
@@ -246,20 +250,20 @@ p{
 }
 
 .video_cont{
-    @include mixins.font_w_s_lh (400,1rem,26.25px);    
+    @include mixins.font_weight_size_lineheight (400,1rem,26.25px);    
     text-align: center;    
-    color: vars.$font-g;
+    color: vars.$font-gray;
     @include mixins.responsive(1024px) {        
-        @include mixins.font_w_s_lh ("0",0.9rem,normal);    
+        @include mixins.font_weight_size_lineheight ("0",0.9rem,normal);    
     }  
     @include mixins.responsive(375px) {        
-        @include mixins.font_w_s_lh ("0",0.85rem,"0");    
+        @include mixins.font_weight_size_lineheight ("0",0.85rem,"0");    
     }       
 }
 
 .video_img{
     margin-top: 5vh;
-    @include mixins.w_h (58vw,funcs.calculate-video-h(58vw));    
+    @include mixins.width_height (58vw,funcs.calculate-video-h(58vw));    
     box-sizing: content-box;
     display: flex;
     flex-direction: row;
@@ -268,15 +272,15 @@ p{
     background-size: 100% 100%;
     justify-content: center;
     @include mixins.responsive(1024px) {        
-        @include mixins.w_h (68vw,funcs.calculate-video-h(68vw));  
+        @include mixins.width_height (68vw,funcs.calculate-video-h(68vw));  
     }  
     @include mixins.responsive(375px) {        
-        @include mixins.w_h (88vw,funcs.calculate-video-h(88vw));  
+        @include mixins.width_height (88vw,funcs.calculate-video-h(88vw));  
     }      
 }
 
 .video_button{  
-    @include mixins.w_h (7vw,7vw);
+    @include mixins.width_height (7vw,7vw);
     background-image: url(../res/play-button.svg);    
     background-size: 100% 100%;
     align-self: center;
@@ -286,6 +290,7 @@ p{
 /*********************/
 .footer{
     @extend %box-h-fit-content;
+    width: 100%;
     padding-left: 19vw;
     padding-top: 4vh;    
     padding-bottom: 4vh;    
@@ -293,8 +298,8 @@ p{
 }
 
 .f_name{ 
-    @include mixins.font_w_s_lh (500,1.3125rem,24.61px);      
-    color: vars.$font-w;
+    @include mixins.font_weight_size_lineheight (500,1.3125rem,24.61px);      
+    color: vars.$font-white;
     @include mixins.responsive(375px) {        
         font-size: 1rem;  
     }     
@@ -302,9 +307,9 @@ p{
 
 .f_copyright{  
     margin-top: 20px;  
-    @include mixins.font_w_s_lh (400,0.8125rem,21.33px);         
-    color: vars.$font-w;
+    @include mixins.font_weight_size_lineheight (400,0.8125rem,21.33px);         
+    color: vars.$font-white;
     @include mixins.responsive(375px) {        
-        @include mixins.font_w_s_lh ("0",0.7rem,normal);  
+        @include mixins.font_weight_size_lineheight ("0",0.7rem,normal);  
     }    
 }
