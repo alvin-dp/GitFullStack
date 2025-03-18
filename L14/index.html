@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Project</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container text-center">
+        <div class="row">
+          <div class="col-12 p-2 border text-bg-info">
+            <!-- HEADER -->
+            <nav class="navbar navbar-expand-md bg-body-info">
+                <div class="container-fluid">
+                  <a class="navbar-brand" href="#"> <img src="./sqare.svg" alt="Logo" width="30" height="30" class="d-inline-block align-text-top"> Main menu</a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuDropDown" aria-controls="mainMenuDropDown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="mainMenuDropDown">
+                    <ul class="navbar-nav">
+                      <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#accordion-article-1">Article 1</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#accordion-article-2">Article 2</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#accordion-article-3">Article 3</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#accordion-article-4">Article 4</a>
+                      </li>                      
+                      <li class="nav-item dropdown text-bg-info">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Articles list
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#">Some action 1</a></li>
+                          <li><a class="dropdown-item" href="https://picsum.photos/250/450?grayscale" target="_blank">Фото 1</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item" href="#">Some action 2</a></li>
+                          <li><a class="dropdown-item" href="https://picsum.photos/250/450" target="_blank">Фото 2</a></li>                              
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>             
+          </div>
+        </div>
+      
+        <div class="row">
+          <div class="col-12 col-sm-4 col-md-3 p-2 border rounded-3 text-bg-secondary">
+                <!-- LEFT -->
+                <div id="carouselPix" class="carousel slide">
+                    <div class="carousel-inner">
+                        <div class="carousel-item">
+                            <img src="https://picsum.photos/seed/minimo/300/500" alt="pic1">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://picsum.photos/300/500" alt="pic2">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://picsum.photos/300/500?grayscale" alt="pic3">
+                        </div>
+                        <div class="carousel-item active">
+                          <img src="https://picsum.photos/seed/primo/300/500?grayscale" alt="pic4">
+                        </div>  
+                        <div class="carousel-item">
+                          <img src="https://picsum.photos/seed/belisimo/300/500?grayscale" alt="pic5">
+                        </div>                                               
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselPix" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselPix" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+          <div class="col-12 col-sm-8 col-md-5 p-2 border rounded-3 text-bg-success">
+            <!-- main -->
+            <div class="accordion border rounded-3 text-bg-success" id="accordionPanelsOpenlast">
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-article-1" aria-expanded="true" aria-controls="accordion-article-1">
+                      Article 1
+                    </button>
+                  </h2>
+                  <div id="accordion-article-1" class="accordion-collapse collapse">
+                    <div class="accordion-body text-bg-success">
+                      <strong>Lorem ipsum dolor sit amet.</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, consectetur. Architecto possimus omnis sapiente ad debitis, ea quidem atque quisquam unde obcaecati dolor voluptates? <code>aspernatur laudantium ullam delectus</code> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam itaque, repudiandae sed consequatur animi harum. Recusandae hic iure corporis ipsum obcaecati eaque neque, aliquam cum excepturi dolorem, eius culpa! Sit id nobis deserunt odio enim, maxime eum tempora vel tenetur necessitatibus eos cupiditate voluptatum beatae adipisci reiciendis! Ipsum officia maiores aliquid illum iste harum maxime commodi soluta. Architecto autem vero dicta laboriosam, facere nesciunt aliquam unde harum tempora rerum dignissimos dolores facilis voluptatibus odio consequatur error sunt, pariatur repellat iure, nihil eos? Et vero neque quaerat quam, explicabo corporis autem nemo dicta ab consectetur obcaecati asperiores quod rem commodi laboriosam error, necessitatibus laborum sapiente hic beatae deserunt cupiditate? Perspiciatis facere et esse doloribus veritatis nesciunt, molestias provident distinctio, ducimus dicta suscipit earum eum officia facilis eligendi vel id saepe eaque ad molestiae rem fugiat, eius libero? Debitis praesentium autem quidem sequi repellat, eius possimus perferendis id dolore consectetur est veritatis doloribus voluptas nisi quibusdam vero at commodi nesciunt alias tempore, dolorum quaerat voluptate dignissimos. Nulla deleniti autem ea sit, quas, illo facere error repellendus tenetur dicta alias cupiditate! Quos, nesciunt commodi odio repellendus blanditiis maxime, voluptatibus quod aliquid asperiores, aperiam ipsum ex cum quas? Necessitatibus officiis delectus ratione quae aperiam!
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed bg-success" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-article-2" aria-expanded="false" aria-controls="accordion-article-2">
+                      Article 2
+                    </button>
+                  </h2>
+                  <div id="accordion-article-2" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                      <strong>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi nostrum dolore quaerat similique officia est, ut omnis dolorum odio commodi quia accusantium illum vero corrupti quisquam maxime beatae vitae fuga delectus. Consequuntur dolorem sed, veniam voluptatem qui magni alias quia mollitia, deserunt placeat nemo amet consectetur dicta cupiditate aliquam fugit saepe ullam esse, explicabo quisquam modi? Incidunt adipisci asperiores nesciunt. Perferendis hic reiciendis sint cumque est similique sapiente dolores vitae consequuntur laboriosam pariatur necessitatibus, ipsa ipsum qui, ipsam mollitia neque. Ipsa blanditiis reiciendis totam, non iusto libero sint? Eum ut culpa natus minus quo. Voluptatem eveniet doloribus omnis, ea ipsum fugiat maxime aut amet modi nemo quaerat excepturi id incidunt iure tenetur, neque soluta architecto a earum natus dolorum maiores atque labore illum. Accusamus quae ipsam, vel, nam minima nemo doloremque facere enim delectus, illum adipisci tenetur ab officia hic? Fugit atque odit, eligendi quis eos optio laudantium quaerat beatae quidem vitae natus? Laboriosam, officiis. Consequatur exercitationem ipsum odio, eum fuga sequi? Autem ducimus inventore pariatur iusto. Accusantium molestiae ad exercitationem sed libero expedita officiis neque sapiente vel et ut commodi error, rem sequi obcaecati quaerat fuga repellendus odio aliquam sint vitae, consectetur tenetur deleniti cupiditate? Odit, ducimus iure. Quo quos nemo enim voluptates maxime libero dignissimos aliquam repellat laborum nostrum perferendis deserunt cumque dolor beatae sunt, distinctio quia at voluptatibus. Atque, dolor repellat nisi voluptate repudiandae doloribus totam quam, cupiditate asperiores non unde sit dolore nobis beatae optio ab explicabo exercitationem accusamus facere maxime consequuntur ex? Reiciendis, est fuga!
+                      </strong>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-article-3" aria-expanded="false" aria-controls="accordion-article-3">
+                      Article 3 
+                    </button>
+                  </h2>
+                  <div id="accordion-article-3" class="accordion-collapse collapse show">
+                    <div class="accordion-body">
+                      <i class="text-danger">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus quasi quam, tempora doloribus, voluptas doloremque vitae amet consequatur quia ipsam laborum placeat non ipsum inventore praesentium illum blanditiis expedita minima! Iusto praesentium eaque eligendi quos modi. Obcaecati eum excepturi dignissimos voluptate at ea earum amet?</i>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed text-bg-warning" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-article-4" aria-expanded="false" aria-controls="accordion-article-4">
+                        Article 4
+                      </button>
+                    </h2>
+                    <div id="accordion-article-4" class="accordion-collapse collapse">
+                      <div class="accordion-body">
+                        <b class="text-danger">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus quasi quam, tempora doloribus, voluptas doloremque vitae amet consequatur quia ipsam laborum placeat non ipsum inventore praesentium illum blanditiis expedita minima! Iusto praesentium eaque eligendi quos modi. Obcaecati eum excepturi dignissimos voluptate at ea earum amet?</b>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-article-5" aria-expanded="false" aria-controls="accordion-article-5">
+                        Article 5
+                      </button>
+                    </h2>
+                    <div id="accordion-article-5" class="accordion-collapse collapse">
+                      <div class="accordion-body">
+                        <i class="text-danger">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus quasi quam, tempora doloribus, voluptas doloremque vitae amet consequatur quia ipsam laborum placeat non ipsum inventore praesentium illum blanditiis expedita minima! Iusto praesentium eaque eligendi quos modi. Obcaecati eum excepturi dignissimos voluptate at ea earum amet?</i>
+                      </div>
+                    </div>
+                  </div>                                  
+              </div>            
+          </div>
+          <div class="col-12 col-sm-12 col-md-4 p-2 border rounded-3 text-bg-secondary">
+            <!-- RIGHT -->
+            <form>
+ <!--              <div class="input-group">
+                <span class="input-group-text">First and last name</span>
+                <input type="text" aria-label="First name" class="form-control">
+                <input type="text" aria-label="Last name" class="form-control">
+              </div> -->
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="iGroup-name1">Name</span>
+                <input type="text" class="form-control" placeholder="First name" aria-label="First name" aria-describedby="iGroup-name1">
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="iGroup-name2">Last name</span>
+                <input type="text" class="form-control" placeholder="Last Name" aria-label="Last name" aria-describedby="iGroup-name2">
+              </div>                            
+              <div class="form-floating">
+                <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                  <option selected>Select value</option>
+                  <option value="1">First</option>
+                  <option value="2">Second</option>
+                </select>
+                <label for="floatingSelect">Select option</label>
+              </div>                            
+                <div class="mb-4">
+                  <div id="emailHelp" class="form-text">Enter login information</div>
+                  <label for="exampleInputEmail1" class="form-label">Email address</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">                  
+                </div>
+                <div class="mb-4">
+                  <label for="exampleInputPassword1" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="mb-4 form-check form-switch">
+                  <input type="checkbox" class="form-check-input" role="switch" id="exampleCheck1">
+                  <label class="form-check-label float-start" for="exampleCheck1">Confirm</label>
+                  <button type="submit" class="btn btn-primary float-end">Submit</button>
+                </div>                
+              </form>             
+            </div>
+        </div>
+      
+        <div class="row">
+          <div class="col-12 p-2 border text-bg-info">
+            <!-- FOOTER -->
+            <div class="form-check form-switch form-check-inline">
+              <input class="form-check-input" type="checkbox" role="switch" id="FooterSwDefault">
+              <label class="form-check-label" for="FooterSwDefault">Switch</label>
+            </div>
+            <div class="form-check form-switch form-check-inline">
+              <input class="form-check-input" type="checkbox" role="switch" id="FooterSwChecked" checked>
+              <label class="form-check-label" for="FooterSwChecked">Checked switch</label>
+            </div>
+            <div class="form-check form-switch form-check-inline">
+              <input class="form-check-input" type="checkbox" role="switch" id="FooterSwDisabled" disabled>
+              <label class="form-check-label" for="FooterSwDisabled">Disabled switch</label>
+            </div>          
+          </div>
+        </div>
+      </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
