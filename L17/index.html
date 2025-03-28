@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TailWind example</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script defer src="./index.js"></script>
+  </head>
+  <body>
+    <Div class="size-screen">
+        <div class="h-[10vh] flex flex-row justify-between bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% rounded-t-md text-xl text-center p-2">
+          <p class="inline-block text-base md:text-xl xl:text-3xl uppercase text-yellow-100"> TailWind example site</p>                   
+          <div class="size-15 rounded-lg bg-radial-[at_15%_15%] from-indigo-500 via-blue-500 to-indigo-900 to-90% shadow-lg "></div>           
+        </div>
+        <div class="flex flex-wrap">
+            <div class="h-auto w-full sm:w-1/2 md:w-3/12 bg-blue-300 p-2 ">
+              <div class="flex flex-row flex-wrap justify-between">
+                <div class="size-10 rounded-full bg-radial-[at_15%_15%] from-sky-300 via-blue-500 to-indigo-900 to-90%"></div>
+                <div class="size-10 rounded-full bg-radial-[at_55%_15%] from-sky-300 via-blue-500 to-indigo-900 to-90%"></div>
+                <div class="size-10 rounded-full bg-radial-[at_75%_15%] from-sky-300 via-blue-500 to-indigo-900 to-90%"></div> 
+              </div>
+              <div class="flex flex-col h-fit w-full justify-center mt-4">
+                <img src="https://picsum.photos/seed/bersio/400/200?grayscale" alt="pic1">
+                <img class="pt-3 opacity-50" src="https://picsum.photos/seed/ber23/400/200?grayscale" alt="pic1">
+              </div>
+
+            </div>
+            <div class="h-fit w-full sm:w-1/2 md:w-8/12 bg-yellow-500 p-2 rounded-lg">
+              <div class="w-full grid grid-flow-col grid-rows-4 gap-4 border-orange-950 border-2 rounded-lg p-2 text-lg"> 
+                <div class="row-span-4 bg-lime-300 p-2"> 
+                  <p class="mb-2 text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis alias atque quas nobis quasi. Repudiandae nihil, temporibus delectus recusandae magnam beatae sequi ad enim distinctio.</p>
+                </div>
+                <div class="col-span-3 bg-lime-400 rounded-lg p-2 first-letter:text-2xl first-letter:font-bold hover:font-semibold"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, iusto?</div>
+                <div class="col-span-3 row-span-2 bg-lime-500 rounded-lg p-2 text-justify"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta labore eius deleniti, dolores officiis ex quo illum esse hic id cum maiores rerum ut?</div>
+                <div class="col-span-3 bg-lime-600 rounded-lg p-2 text-indigo-950 text-base md:text-xl xl:text-3xl font-semibold"> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa distinctio architecto doloremque corporis nobis officiis? </div>
+              </div>
+            </div>
+            <div class="h-[10vh] w-full md:h-auto sm:w-full md:w-1/12 bg-emerald-500 p-1">
+              <button id="clickMe" class="float-end px-2 py-2 h-full md:h-fit w-full text-wrap truncate bg-blue-500 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 rounded-md ring-slate-300">
+                Save changes
+              </button> 
+            </div>
+        </div>
+        <div class="h-[10vh] bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%  rounded-b-md text-xl text-center pt-2">
+          Footer
+      </div>        
+    </Div>
+  </body>
+</html>
