@@ -79,12 +79,10 @@ console.log("Task #4")
 function evenFn (n)
 {
     let massive = [];
-
     if (Number (n) === NaN) 
         {
              return massive;
-        }
-        
+        }       
     for (let x=0; x<=n; x++)
     {
         if ( x === 0 || x % 2 !== 0)
