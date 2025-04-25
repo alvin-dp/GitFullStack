@@ -59,7 +59,7 @@ console.log(calorieCalculator.getProductCalories('Apple')) // Product not found
  * Використання конструкції class для створення класу UniqueUsernames.
  * Застосування new Set() для внутрішнього сховища імен користувачів у конструкторі класу.
  */
-
+console.log("Users Task");
 class UniqueUsernames {
   constructor() {
     this.users  = new Set();
