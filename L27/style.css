@@ -1,0 +1,38 @@
+.main-container {
+    width: 200px;
+    height: 300px;
+    display: flex;
+    overflow: hidden;
+}
+
+img{
+    transition: all 0.5s ease;
+}
+
+.slide-indicator-container{ 
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.slide-indicator{
+  background: radial-gradient(#888, rgba(255, 255, 255, 0));  
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.slide-indicator-active{
+    background: radial-gradient(black, rgba(255, 255, 255, 0));  
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+  }
+
+.buttons-container{ 
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+}
