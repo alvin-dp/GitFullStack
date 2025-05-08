@@ -7,7 +7,7 @@ const imagesSrc = ['https://picsum.photos/id/123/200/300',
   'https://picsum.photos/id/233/200/300',
   'https://picsum.photos/id/238/200/300'
 ];
-const body  = document.getElementsByTagName('body')[0]; 
+//const body  = document.getElementsByTagName('body')[0]; 
 const oneimgSize  = 200;
 let autoplayState = true;
 const imgsElementsArray = new Array;
@@ -15,11 +15,24 @@ const indicatorsElementsArray = new Array;
 let prevSlide = 0;
 const SlidesCount = imagesSrc.length;
 
+// GlobalCaruselContainer Creator 
+function createGlobalCaruselContainer(targetElement){
+  const element = document.createElement('div');
+  element.classList.toggle('global-Carusel-container');
+  if (targetElement === undefined){
+    document.body.appendChild(element);
+  }
+  else{
+    targetElement.appendChild(element); 
+  }
+  return element;
+}
+
 // main slide container
-function createMainContainer(){
+function createMainContainer(parentElement){
   const main = document.createElement('div');
   main.classList.toggle('main-container');
-  body.appendChild(main);
+  parentElement.appendChild(main);
   return main;
 }
 // button container
@@ -158,12 +171,13 @@ function addSwipes(element){
   })    
 }
 
-const main = createMainContainer();
+const globalContainer = createGlobalCaruselContainer();
+const main = createMainContainer(globalContainer);
 
 createAndRenderImages(imagesSrc,main);
-createSlideIndicators(SlidesCount,document.body);
+createSlideIndicators(SlidesCount,globalContainer);
 
-const buttonConteinerElement  = createButtonContainer(body);
+const buttonConteinerElement  = createButtonContainer(globalContainer);
 const getNexSlide = getNextPositionCreator(SlidesCount);
 createCarouselButtons(getNexSlide,buttonConteinerElement);
 

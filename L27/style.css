@@ -8,7 +8,10 @@
 img{
     transition: all 0.5s ease;
 }
-
+.global-Carusel-container{
+    width: fit-content;
+    height: fit-content;
+}
 .slide-indicator-container{ 
     margin-top: 10px;
     margin-bottom: 10px;
