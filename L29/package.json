@@ -1,0 +1,15 @@
+{
+  "name": "test-cases",
+  "version": "1.0.0",
+  "description": "tests",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "AlVin",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
