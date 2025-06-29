@@ -16,7 +16,7 @@ module.exports = {
   mode: 'production',
   //mode: 'development',  
   entry: {
-    main: './src/index.js',
+    main: './src/index.jsx',
     stat: './src/statistics.js'
   },
   output: {
@@ -29,6 +29,7 @@ module.exports = {
       directory: path.join(__dirname, 'dist'),
     },
     compress: true,
+    hot: false,    
     port: 9000,
   },  
   plugins: [
@@ -40,7 +41,7 @@ module.exports = {
     new CopyWebpackPlugin({
           patterns: [
             {
-              from: path.resolve(__dirname, 'src/favicon.png'),
+              from: path.resolve(__dirname, './src/favicon.png'),
               to: path.resolve(__dirname, 'dist'),
             }
           ]
@@ -52,17 +53,23 @@ module.exports = {
   ],
   module: {
     rules: [
-      {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"],
-      },
+      // {
+      //   test: /\.css$/,
+      //   use: ["style-loader", "css-loader"],
+      // },
       {
         test: /\.(png|jpg|jpeg|svg|gif|webp)$/,
-        type: 'asset/resource'
+        type: 'asset/resource',
+        generator: {
+          filename: 'assets/images/[name].[hash][ext]',
+        },        
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
-        type: 'asset/resource'
+        type: 'asset/resource',
+        generator: {
+          filename: 'assets/fonts/[name].[hash][ext]',
+        },
       },
       {
         test: /\.(csv|tsv)$/i,

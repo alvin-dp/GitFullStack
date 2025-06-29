@@ -1,9 +1,7 @@
-import "./style.css"
-import "./new_scss.scss"
 
-async function func1 (greatName:string) {
+async function func1 (greatName:string) : Promise<void> {
 
-    console.log("Hello," + greatName)
+    console.log("Hello, from typeScript, " + greatName)
 }
 
 export default func1;

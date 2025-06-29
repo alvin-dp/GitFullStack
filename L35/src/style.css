@@ -1,13 +1,4 @@
 
-@fontFace = {
-  font-family: 'MyRoboto';
-  src: url('./assets/roboto-cyrillic-100-normal.woff2') format('woff2'),
-    url('./assets/roboto-cyrillic-100-normal.woff') format('woff');
-  font-weight: 100;
-  font-style: normal;
-}
-
 body {
   background: yellow;
-  font-family: 'MyRoboto';
 }
