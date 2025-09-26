@@ -1,0 +1,12 @@
+doctype html
+html
+  include head.pug
+
+  body
+    br
+    h1(class='text-green')= 'User '+ userID
+    br
+    p#userId(class='i-bold')= 'UserID is ' + userID
+    p#userName(class='i-bold')= 'Name is ' + userName
+    br
+  include footer.pug
