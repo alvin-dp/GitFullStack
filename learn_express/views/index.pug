@@ -1,0 +1,17 @@
+doctype html
+html
+  include head.pug
+
+  body
+    br
+    h1(class='text-red') Main page
+    br
+    ul
+      li
+        a(class='text-green i-bold' href='/login') login
+      li
+        a(class='text-green i-bold' href='/users') Users
+      li
+        a(class='text-green i-bold' href='/articles') articles
+    br
+  include footer.pug
