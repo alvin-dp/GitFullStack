@@ -8,10 +8,12 @@ html
     br
     ul
       li
-        a(class='text-green i-bold' href='/login') login
+        a(class='text-red i-bold' href='/signin') Sign in/logout with Passport            
       li
-        a(class='text-green i-bold' href='/users') Users
+        a(class='text-green i-bold' href='/login') Login with JWT
       li
-        a(class='text-green i-bold' href='/articles') articles
+        a(class='text-red i-bold' href='/users') Users protected by Passport
+      li
+        a(class='text-green i-bold' href='/articles') Articles protected by JWT
     br
   include footer.pug

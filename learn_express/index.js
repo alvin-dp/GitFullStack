@@ -3,12 +3,27 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
+//const helmet = require('helmet');
 const session = require('express-session');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
 const path = require('path');
 const app = express();
+app.use(express.urlencoded({ extended: false })); 
 const router = express.Router();
 const port = 3000; 
 dotenv.config();
+// helmet
+// app.use(helmet());
+// app.use(helmet.contentSecurityPolicy({
+//   directives: {
+//     defaultSrc: ["'self'"],
+//     scriptSrc: ["'self'"], // "https://trustedscripts.example.com"
+//     objectSrc: ["'none'"],
+//     upgradeInsecureRequests: true,
+//   }
+//  }));
+//end helmet
 
 const secretKey = process.env.SECRETKEY;
 app.set('views', path.join(__dirname, 'views'));
@@ -108,6 +123,45 @@ const sessionPageCounter = (req,res, next) => {
   next();
 }
 
+//passport
+//app.use(require('express-session')({
+//  secret: 'tajemnica', // секретний ключ
+//  resave: false,
+//  saveUninitialized: false,
+//}));
+app.use(passport.authenticate('session'));
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Налаштування стратегії Passport
+passport.use(new LocalStrategy(
+  function(username, password, done) {
+    if (username === "test" && password === "secret") {
+      return done(null, {id: 1, name: "Test"});
+    } else {
+      return done(null, false, { message: 'Неправильні дані.' });
+    }
+  }
+));
+
+// Серіалізація та десеріалізація користувача
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+  // Знайти користувача за ID
+  // Припустимо, що ми знайшли користувача
+  done(null, {id: 1, name: "Test"});
+});
+
+const isPassportAuthenticated = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect('/signin');
+};
+
 // Middleware
 app.use(express.static('public'));
 app.use(bodyParser.json());
@@ -117,9 +171,24 @@ app.use(sessionPageCounter);
 
 router.get('/', (req, res) => {
   //res.send(`Learn Express is YES!`);
-  res.render('index.pug', { nameTitle: 'Login page' });     
+  res.render('index.pug', { nameTitle: 'Main page' });     
 });
 
+router.post('/signin/password', passport.authenticate('local', {
+  successRedirect: '/',
+  failureRedirect: '/signin'
+}));
+
+router.post('/logout', function(req, res, next) {
+  req.logout(function(err) {
+    if (err) { return next(err); }
+    res.redirect('/');
+  });
+});
+
+router.get('/signin', function(req, res, next) {
+  res.render('signin.ejs',{name: 'Sign in with Passport'});
+});
 router.get('/login', (req, res) => {
   res.render('login.pug', { nameTitle: 'Login page' });   
 });
@@ -127,13 +196,13 @@ router.get('/login', (req, res) => {
 app.use('/login',myJwtBuilder); 
 app.use('/articles',myJwtChecker); 
 
-router.get('/users', (req, res) => {   
+router.get('/users', isPassportAuthenticated, (req, res) => {   
    const ss_name = getNamePageViews(req);
-    res.render('users.pug', { nameTitle: 'Users page'
+    res.render('users.pug', { nameTitle: 'Users page protected with Passport'
                             , viewCount: getPageViewsValue(ss_name,req.session.page_views) });
 });
 
-router.get('/users/:userId', (req, res) => {  
+router.get('/users/:userId', isPassportAuthenticated, (req, res) => {  
   const ss_name = getNamePageViews(req);
   res.render('user.pug', { nameTitle: `User ID ${req.params.userId}`
                         , userID: req.params.userId
