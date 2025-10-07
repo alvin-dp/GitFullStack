@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken');
 //const helmet = require('helmet');
 const session = require('express-session');
 const passport = require('passport');
+const mongoTools  = require('./mongoFunctions');
 const LocalStrategy = require('passport-local').Strategy;
 const path = require('path');
 const app = express();
@@ -42,7 +43,6 @@ app.use(session({
    cookie: { secure: false } 
  }));
 
-
 const myJwtBuilder = (req, res, next) => {
   try {
   const payload = {
@@ -58,7 +58,6 @@ catch (error){
   next(error);
 }
 };
-
 
 const myJwtChecker = (req, res, next) => {
   try {
@@ -98,9 +97,8 @@ const sessionPageCounter = (req,res, next) => {
   if (ss_name===undefined) {
     next();
   }
-  //console.log('Session info - name ',ss_name);  
+ 
   if (req.session.page_views) {
-    //console.log('Session info - ',req.session);
     const convertArray = Object.entries(req.session.page_views);
     const page_views = new Map(convertArray);    
     if (page_views.has(ss_name)) {
@@ -123,12 +121,6 @@ const sessionPageCounter = (req,res, next) => {
   next();
 }
 
-//passport
-//app.use(require('express-session')({
-//  secret: 'tajemnica', // секретний ключ
-//  resave: false,
-//  saveUninitialized: false,
-//}));
 app.use(passport.authenticate('session'));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -246,6 +238,14 @@ router.get('/get-theme', (req, res) => {
   const cookieValue = req.cookies.favtheme;
   res.send(`Значення cookie: ${cookieValue}`);
 });
+
+router.get('/listcol', async (req, res) => {
+    const collections = await mongoTools.listCollections(process.env.DEF_DB_NAME,false);
+    const doc = await mongoTools.findDocuments(process.env.DEF_DB_NAME,process.env.DEF_COLLECTION_NAME,{year:1991},false);
+    res.render('listcol.pug', {listCol: collections, films:doc})
+
+});
+
 
 app.use('/', router);
 

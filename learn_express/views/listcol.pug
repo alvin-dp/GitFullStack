@@ -1,0 +1,16 @@
+doctype html
+html
+  include head.pug
+
+  body
+    br
+    h1(class='text-red')='List of DB collections'
+    br
+    ul
+    each val in listCol
+        li=val.name 
+    br
+    h2='Query result titles:'
+    each film in films
+        li=film.title 
+  include footer.pug
