@@ -1,0 +1,14 @@
+doctype html
+html
+  include head.pug
+
+  body
+    br
+    h1(class='text-red')='Operation '+ db_operation + ' result:'
+    br
+    h1(class='text-green')= 'Result :' + db_result
+    br
+    h2='Query result output:'
+    each element in data
+        li=element
+  include footer.pug

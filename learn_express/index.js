@@ -2,12 +2,14 @@ const dotenv = require('dotenv');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const jwt = require('jsonwebtoken');
 //const helmet = require('helmet');
 const session = require('express-session');
 const passport = require('passport');
 const mongoTools  = require('./mongoFunctions');
-const LocalStrategy = require('passport-local').Strategy;
+const passportModule  = require('./passportModule');
+const jwtModule  = require('./jwtModule');
+const myFunctions  = require('./myFunctions');
+//const LocalStrategy = require('passport-local').Strategy;
 const path = require('path');
 const app = express();
 app.use(express.urlencoded({ extended: false })); 
@@ -31,10 +33,6 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.engine('pug', require('pug').__express);
 
-const myLogger = (req, res, next) => {
-  console.log('Logged url ', req.url ,  new Date().toISOString());
-  next();
-};
 
 app.use(session({
    secret: secretKey, 
@@ -42,127 +40,20 @@ app.use(session({
    saveUninitialized: true, 
    cookie: { secure: false } 
  }));
-
-const myJwtBuilder = (req, res, next) => {
-  try {
-  const payload = {
-    userId: 123,
-    username: 'John_Doe'
-  };
-  const token = jwt.sign(payload, secretKey, { expiresIn: '1h' });  
-  res.cookie('jwtTkn', token, { maxAge: 900000, httpOnly: true });  
-  console.log('jwtTkn created');
-  next();
-}
-catch (error){
-  next(error);
-}
-};
-
-const myJwtChecker = (req, res, next) => {
-  try {
-  const token = req.cookies.jwtTkn;
-  jwt.verify(token,secretKey);
-  const decodedPayload = jwt.decode(token);
-  console.log(`Usr name - ${decodedPayload.username}  loged in.`);  
-  next();
-}
-catch (error){
-  next(error);
-}
-};
-
-function getNamePageViews(req) {
-  if (toString(req.url).charAt(1)==='.'){
-    return undefined;
-  }
-  let ss_name= req.url + '_views';
-  if (req.url==='/') {
-    ss_name = ss_name.replaceAll('/','root')
-    }
-  else{
-    ss_name = ss_name.substring(1);
-  }
-  return ss_name;
-}
-
-function getPageViewsValue(name,ssData){
-    const convertArray = Object.entries(ssData);
-    const page_views = new Map(convertArray); 
-    return page_views.get(name); 
-}
-// midlleware for PageCounters in session
-const sessionPageCounter = (req,res, next) => { 
-  const ss_name = getNamePageViews(req);
-  if (ss_name===undefined) {
-    next();
-  }
- 
-  if (req.session.page_views) {
-    const convertArray = Object.entries(req.session.page_views);
-    const page_views = new Map(convertArray);    
-    if (page_views.has(ss_name)) {
-      let count= page_views.get(ss_name); 
-      page_views.delete(ss_name);
-      page_views.set(ss_name,++count); 
-      req.session.page_views  = Object.fromEntries(page_views);
-    }
-    else {
-        page_views.set(ss_name,1);
-        req.session.page_views  = Object.fromEntries(page_views);        
-    } 
-  } else {
-    //console.log('Session info - page_views map created');
-    const page_views = new Map(); 
-    page_views.set(ss_name,1);
-    req.session.page_views  = Object.fromEntries(page_views);
-   // console.log('Session info - page_views'. req.session.page_views);    
-  }  
-  next();
-}
-
 app.use(passport.authenticate('session'));
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Налаштування стратегії Passport
-passport.use(new LocalStrategy(
-  function(username, password, done) {
-    if (username === "test" && password === "secret") {
-      return done(null, {id: 1, name: "Test"});
-    } else {
-      return done(null, false, { message: 'Неправильні дані.' });
-    }
-  }
-));
-
-// Серіалізація та десеріалізація користувача
-passport.serializeUser(function(user, done) {
-  done(null, user.id);
-});
-
-passport.deserializeUser(function(id, done) {
-  // Знайти користувача за ID
-  // Припустимо, що ми знайшли користувача
-  done(null, {id: 1, name: "Test"});
-});
-
-const isPassportAuthenticated = (req, res, next) => {
-  if (req.isAuthenticated()) {
-    return next();
-  }
-  res.redirect('/signin');
-};
-
 // Middleware
 app.use(express.static('public'));
 app.use(bodyParser.json());
-app.use(myLogger);
+app.use(myFunctions.myLogger);
 app.use(cookieParser());
-app.use(sessionPageCounter);
+app.use(myFunctions.sessionPageCounter);
+app.use('/login',jwtModule.myJwtBuilder); 
+app.use('/articles',jwtModule.myJwtChecker); 
 
 router.get('/', (req, res) => {
-  //res.send(`Learn Express is YES!`);
   res.render('index.pug', { nameTitle: 'Main page' });     
 });
 
@@ -185,21 +76,18 @@ router.get('/login', (req, res) => {
   res.render('login.pug', { nameTitle: 'Login page' });   
 });
 
-app.use('/login',myJwtBuilder); 
-app.use('/articles',myJwtChecker); 
-
-router.get('/users', isPassportAuthenticated, (req, res) => {   
-   const ss_name = getNamePageViews(req);
+router.get('/users', passportModule.isPassportAuthenticated, (req, res) => {   
+   const ss_name = myFunctions.getNamePageViews(req);
     res.render('users.pug', { nameTitle: 'Users page protected with Passport'
-                            , viewCount: getPageViewsValue(ss_name,req.session.page_views) });
+                            , viewCount: myFunctions.getPageViewsValue(ss_name,req.session.page_views) });
 });
 
-router.get('/users/:userId', isPassportAuthenticated, (req, res) => {  
-  const ss_name = getNamePageViews(req);
+router.get('/users/:userId', passportModule.isPassportAuthenticated, (req, res) => {  
+  const ss_name = myFunctions.getNamePageViews(req);
   res.render('user.pug', { nameTitle: `User ID ${req.params.userId}`
                         , userID: req.params.userId
                         , userName: 'Will Doe'
-                        , viewCount: getPageViewsValue(ss_name,req.session.page_views) });  
+                        , viewCount: myFunctions.getPageViewsValue(ss_name,req.session.page_views) });  
 });
 
 const articles= [];
@@ -241,9 +129,113 @@ router.get('/get-theme', (req, res) => {
 
 router.get('/listcol', async (req, res) => {
     const collections = await mongoTools.listCollections(process.env.DEF_DB_NAME,false);
-    const doc = await mongoTools.findDocuments(process.env.DEF_DB_NAME,process.env.DEF_COLLECTION_NAME,{year:1991},false);
+    const fields = { title: 1 };
+    const doc = await mongoTools.findDocuments(process.env.DEF_DB_NAME,process.env.DEF_COLLECTION_NAME,{year:1990},fields,false);
     res.render('listcol.pug', {listCol: collections, films:doc})
+});
 
+router.get('/db', (req, res) => { 
+  const data = {nameTitle: 'DB operations'};
+  res.render('db.pug', data);
+});
+
+router.get('/db-crud/:type', async (req, res) => {
+    const db_operation = req.params.type;
+    const tempCollection  = 'temp';
+    let updateFields  = {};
+    let docs = [];
+    let query = {};
+    let query_result;
+    switch (db_operation) {
+        case 'insertOne':
+            const newCustomer = {
+              name: 'John Dire',
+              email: 'john.dire@example.com',
+              phone: '1212121212'
+            };
+            query_result  = await mongoTools.insertDocs(process.env.DEF_DB_NAME,tempCollection,newCustomer);
+            if (Array.isArray(query_result)) {
+              docs  = query_result;
+              query_result  = 1;
+              }             
+            res.render('dboutput.pug', {db_operation: db_operation, db_result:query_result, data:docs})
+            break;
+        case 'insertMany':
+            const newCustomers = [
+              {
+                name: 'John Doe',
+                email: 'john.doe@example.com',
+                phone: '123456789'
+              },
+              {
+                name: 'Jane Smith',
+                email: 'jane.smith@example.com',
+                phone: '987654321'
+              },
+              {
+                name: 'Bob Johnson',
+                email: 'bob.johnson@example.com',
+                phone: '456789012'
+              },
+              {
+                name: 'Boby Tohmson',
+                email: 'boby.tohmson@example.com',
+                phone: '202051005'
+              }              
+            ];
+            query_result  = await mongoTools.insertDocs(process.env.DEF_DB_NAME,tempCollection,newCustomers);
+            if (Array.isArray(query_result)) {
+              docs  = query_result;
+              query_result  = 1;
+              }             
+            res.render('dboutput.pug', {db_operation: db_operation, db_result:query_result, data:docs})
+            break;
+        case 'updateOne':
+            query = { email: 'john.doe@example.com' };
+            updateFields = { phone: '987654321' };          
+            query_result  = await mongoTools.updateOneDoc(process.env.DEF_DB_NAME,tempCollection,query,updateFields);
+            res.render('dboutput.pug', {db_operation: db_operation, db_result:query_result, data:docs})
+            break;
+        case 'updateMany':
+            query = { email: {$regex: 'john'} };
+            updateFields = { phone: '9898989898' };          
+            query_result  = await mongoTools.updateDocs(process.env.DEF_DB_NAME,tempCollection,query,updateFields);
+            res.render('dboutput.pug', {db_operation: db_operation, db_result:query_result, data:docs})
+            break;
+        case 'replaceOne':
+            query = { phone: '987654321' };
+            newObj = {
+                name: 'Lily Swanson',
+                email: 'lily.swanson@example.com',
+                phone: '777777777'
+              };          
+            query_result  = await mongoTools.replaceOneDoc(process.env.DEF_DB_NAME,tempCollection,query,newObj);
+            res.render('dboutput.pug', {db_operation: db_operation, db_result:query_result, data:docs})
+            break;
+        case 'deleteOne':
+            query = { phone : { $eq: '202051005' } };
+            query_result  = await mongoTools.deleteDoc(process.env.DEF_DB_NAME,tempCollection,query);
+            res.render('dboutput.pug', {db_operation: db_operation, db_result:query_result, data:docs})
+            break;
+        case 'deleteMany':
+            query = { phone : { $eq: '9898989898' } };
+            query_result  = await mongoTools.deleteSomeDocs(process.env.DEF_DB_NAME,tempCollection,query);
+            res.render('dboutput.pug', {db_operation: db_operation, db_result:query_result, data:docs})
+            break;
+        case 'findWithProjection':
+            //const fields = { title: 1, poster :1,genres: 1};
+            //query = {year:1980};
+            //docs = await mongoTools.findDocuments(process.env.DEF_DB_NAME,tempCollection,query,fields,false);
+            const fields = { name: 1, email :1,phone: 1};
+            query = {};
+            docs = await mongoTools.findDocuments(process.env.DEF_DB_NAME,tempCollection,query,fields,false);
+            query_result  = 1;
+            res.render('dboutput.pug', {db_operation: db_operation, db_result:query_result, data:docs.map(user => `${user.name}, email :${user.email}, phone :${user.phone}`)})
+            break;            
+
+        default:
+          res.redirect('/');
+    }
 });
 
 
