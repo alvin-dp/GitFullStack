@@ -223,15 +223,25 @@ router.get('/db-crud/:type', async (req, res) => {
             res.render('dboutput.pug', {db_operation: db_operation, db_result:query_result, data:docs})
             break;
         case 'findWithProjection':
-            //const fields = { title: 1, poster :1,genres: 1};
-            //query = {year:1980};
-            //docs = await mongoTools.findDocuments(process.env.DEF_DB_NAME,tempCollection,query,fields,false);
             const fields = { name: 1, email :1,phone: 1};
             query = {};
             docs = await mongoTools.findDocuments(process.env.DEF_DB_NAME,tempCollection,query,fields,false);
             query_result  = 1;
             res.render('dboutput.pug', {db_operation: db_operation, db_result:query_result, data:docs.map(user => `${user.name}, email :${user.email}, phone :${user.phone}`)})
-            break;            
+            break;          
+        case 'cursorFindFilmsGt1980':
+            const fieldsCursor = { title: 1, released :1,runtime: 1};
+            query = {year:{$gt:1980}};
+            const sortOrder = {released :-1};
+            docs = await mongoTools.cursorFindCustom(process.env.DEF_DB_NAME,"movies",query,fieldsCursor,sortOrder,10,20,false);
+            query_result  = 1;
+            res.render('dboutput.pug', {db_operation: db_operation, db_result:query_result, data:docs.map(movies => `${movies.title}, released :${movies.released.toLocaleDateString('uk-UA')}, runtime :${movies.runtime}`)})
+            break;   
+         case 'agregateFilms':
+            docs = await mongoTools.agregateFilmsByYearGenreAndCountgt1980(process.env.DEF_DB_NAME,"movies",true);
+            query_result  = 1;
+            res.render('dboutput.pug', {db_operation: db_operation, db_result:query_result, data:docs})
+            break;                        
 
         default:
           res.redirect('/');

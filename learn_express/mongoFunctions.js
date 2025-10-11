@@ -185,4 +185,61 @@ async function deleteSomeDocs(dbName, collectionName, queryString, inLog = true)
         console.log('Відключено MongoDB Atlas, DB - ' + dbName);
     }
 }
-module.exports = {connectToDb,findDocuments,checkAndCreateCollection,listCollections,insertDocs,updateOneDoc,updateDocs,replaceOneDoc,deleteDoc,deleteSomeDocs}
+
+async function cursorFindCustom(dbName, collectionName, queryString, filds=undefined, sortOrder = undefined, skip = 0, limit  = 10, inLog = true) {
+    try {
+        const result=[];
+        const query =  (queryString===undefined) ? {} : queryString;
+        const collection = await checkAndCreateCollection(dbName, collectionName);        
+        const documents = collection.find(query,filds).sort(sortOrder).skip(skip).limit(limit);
+        while (await documents.hasNext()) {
+            const document = await documents.next();
+            result.push(document);
+        }        
+        if (inLog){
+            console.log("Знайдено документів:", result.length);
+        }
+        return result;
+    } catch (error) {
+        console.error("Помилка при пошуку документів:", error);
+    } finally {
+        await client.close();
+        console.log('Відключено MongoDB Atlas, DB - ' + dbName);
+    }
+}
+
+async function agregateFilmsByYearGenreAndCountgt1980(dbName, collectionName, inLog = true) {
+    try {
+        const result=[];        
+        const collection = await checkAndCreateCollection(dbName, collectionName);  
+        
+        const documents = collection.aggregate([
+            { $match: { year: { $gt: 1980 } } },
+            { $unwind: '$genres' },
+            { $group: { _id: { year :'$year', genre :'$genres'}, count: { $sum: 1 } } },
+            {$project: {_id: 0, 
+                year: "$_id.year", 
+                genre: "$_id.genre",
+                totalCount: "$count"
+                }
+            },            
+            { $sort: { year: 1, totalCount: -1 } } 
+        ]);
+
+        while (await documents.hasNext()) {
+            const document = await documents.next();
+            result.push(`year: ${document.year}, genre :${document.genre}, count :${document.totalCount}`);
+        }        
+        if (inLog){
+            console.log("Знайдено документів:", result.length);
+        }
+        return result;
+    } catch (error) {
+        console.error("Помилка при пошуку документів:", error);
+    } finally {
+        await client.close();
+        console.log('Відключено MongoDB Atlas, DB - ' + dbName);
+    }
+}
+
+module.exports = {agregateFilmsByYearGenreAndCountgt1980,connectToDb,findDocuments,checkAndCreateCollection,listCollections,insertDocs,updateOneDoc,updateDocs,replaceOneDoc,deleteDoc,deleteSomeDocs,cursorFindCustom}
