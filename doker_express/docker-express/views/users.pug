@@ -1,0 +1,14 @@
+doctype html
+html
+  include head.pug
+
+  body
+    br
+    h1(class='text-red')='Users. Page views count ' + viewCount
+    br
+    ul
+    each val in [1, 2, 3, 4, 5]
+        li
+            a(class='text-green' href='/users/' + val)= 'User '+val 
+    br
+  include footer.pug

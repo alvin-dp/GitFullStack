@@ -1,0 +1,31 @@
+doctype html
+html
+  include head.pug
+
+  body
+    br
+    h1(class='text-red')='Operations to test:'
+    br
+    ul
+      li
+        a(class='text-green i-bold' href='/db-crud/insertOne') Insert one example
+      li
+        a(class='text-green i-bold' href='/db-crud/insertMany') Insert many example
+      li
+        a(class='text-green i-bold' href='/db-crud/updateOne') Update one example
+      li
+        a(class='text-green i-bold' href='/db-crud/updateMany') Update many example
+      li
+        a(class='text-green i-bold' href='/db-crud/replaceOne') Replace one example     
+      li
+        a(class='text-green i-bold' href='/db-crud/deleteOne') Delete one example   
+      li
+        a(class='text-green i-bold' href='/db-crud/deleteMany') Delete many example
+      li
+        a(class='text-green i-bold' href='/db-crud/findWithProjection') Find with projection example   
+      //- li
+      //-   a(class='text-green i-bold' href='/db-crud/cursorFindFilmsGt1980') Find with cursor 20 films greater 1980 year, sorted downwards by released and skiping 10 first in Movie
+      //- li
+      //-   a(class='text-green i-bold' href='/db-crud/agregateFilms') Find films greater 1980 year and agregates it by year, genre and count in Movie
+    br
+  include footer.pug
