@@ -1,0 +1,27 @@
+doctype html
+html
+  include head.pug
+
+  body
+    br
+    h1(class='text-red')='Operations WITH Mongoose on DB to test:'
+    br
+    ul
+      li
+        a(class='text-green i-bold' href='/mongoose-crud/insertOne') Insert one example
+      li
+        a(class='text-green i-bold' href='/mongoose-crud/insertMany') Insert many example
+      li
+        a(class='text-green i-bold' href='/mongoose-crud/updateOne') Update one example
+      li
+        a(class='text-green i-bold' href='/mongoose-crud/updateMany') Update many example
+      li
+        a(class='text-green i-bold' href='/mongoose-crud/replaceOne') Replace one example     
+      li
+        a(class='text-green i-bold' href='/mongoose-crud/deleteOne') Delete one example   
+      li
+        a(class='text-green i-bold' href='/mongoose-crud/deleteMany') Delete many example
+      li
+        a(class='text-green i-bold' href='/mongoose-crud/findWithProjection') Find with projection example   
+    br
+  include footer.pug

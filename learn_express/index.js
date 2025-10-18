@@ -9,6 +9,7 @@ const mongoTools  = require('./mongoFunctions');
 const passportModule  = require('./passportModule');
 const jwtModule  = require('./jwtModule');
 const myFunctions  = require('./myFunctions');
+const mongooseRouter = require('./mongooseRouter');
 //const LocalStrategy = require('passport-local').Strategy;
 const path = require('path');
 const app = express();
@@ -248,6 +249,7 @@ router.get('/db-crud/:type', async (req, res) => {
     }
 });
 
+app.use('/mongoose-crud', mongooseRouter);
 
 app.use('/', router);
 
